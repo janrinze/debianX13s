@@ -7,7 +7,10 @@ Current EFI boot entry:
 ```Boot0002* Debian local	HD(5,GPT,eb819d1a-33f8-460f-b5b8-c55663435ee9,0x18762800,0x40000)/\EFI\debian\shimaa64.efi```  
 where ```eb819d1a-33f8-460f-b5b8-c55663435ee9``` is the EFI partition (number 5) of the Debian install.  
 to recreate:  
-```efibootmgr --create --gpt --disk /dev/nvme0n1 --part 5 --write-signature --label "Debian on NVME" --loader '\EFI\debian\shimaa64.efi'```
+
+```
+efibootmgr --create --gpt --disk /dev/nvme0n1 --part 5 --write-signature --label "Debian on NVME" --loader '\EFI\debian\shimaa64.efi'
+```
 
 ## EFI partition
 Sometimes the ```/boot/efi/EFI/debian/grub.cfg``` in the EFI partion goes blank.  
