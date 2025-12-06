@@ -14,5 +14,9 @@ use blkid to identify the partitions.
 ensure that in /etc/grub.d/ the correct partitions are set.  
 
 ## dtb file
-ensure the file sc8280xp-lenovo-thinkpad-x13s.dtb is available in the root of the EFI partition
-alternatively copy sc8280xp-lenovo-thinkpad-x13s.dtb to /boot/ and add ```devicetree /boot/sc8280xp-lenovo-thinkpad-x13s.dtb``` to ```/boot/grub/grub.conf```
+ensure the file ```sc8280xp-lenovo-thinkpad-x13s.dtb``` is available in the root of the EFI partition
+alternatively copy ```sc8280xp-lenovo-thinkpad-x13s.dtb``` to ```/boot/``` and add ```devicetree /boot/sc8280xp-lenovo-thinkpad-x13s.dtb``` to ```/boot/grub/grub.conf```
+
+## make a bootable linux USB disk
+To be able to recover from mistakes or broken installs do an install of Debian to a USB disk.
+The USB disk then can be used later for recovery purposes.
