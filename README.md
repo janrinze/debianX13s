@@ -33,3 +33,45 @@ Alternatively copy ```sc8280xp-lenovo-thinkpad-x13s.dtb``` to ```/boot/``` and a
 ## make a bootable linux USB disk
 To be able to recover from mistakes or broken installs do an install of Debian to a USB disk.
 The USB disk then can be used later for recovery purposes.
+
+## help the initrd to find all the firmware
+add a file ```/etc/initramfs-tools/hooks/x13s-firmware``` with the following contents:
+```
+#!/bin/sh
+
+set -e
+
+PREREQ=""
+
+prereqs()
+{
+        echo "$PREREQ"
+}
+
+case \\$1 in
+# get pre-requisites
+prereqs)
+        prereqs
+        exit 0
+        ;;
+esac
+
+. /usr/share/initramfs-tools/hook-functions
+
+# Define a list of firmware files to be included
+FIRMWARE_FILES="\
+qcom/sc8280xp/LENOVO/21BX/qcadsp8280.mbn \
+qcom/sc8280xp/LENOVO/21BX/qccdsp8280.mbn \
+qcom/sc8280xp/LENOVO/21BX/qcdxkmsuc8280.mbn \
+qcom/sc8280xp/LENOVO/21BX/qcvss8280.mbn \
+qcom/sc8280xp/LENOVO/21BX/qcslpi8280.mbn \
+qcom/a660_sqe.fw \
+qcom/a660_gmu.bin"
+
+# Copy each firmware file to initramfs
+for file in $FIRMWARE_FILES; do
+    dir=$(dirname "$file")
+    mkdir -p "${DESTDIR}/lib/firmware/${dir}"
+    cp "/lib/firmware/${file}" "${DESTDIR}/lib/firmware/${dir}/"
+done
+```
