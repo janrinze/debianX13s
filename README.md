@@ -15,9 +15,11 @@ Make sure to copy the grub.cfg in the EFI partition as grub.cfg.orig.
 This way when grub.cfg happens to become an empty file it is possible to restore from the .orig file. 
 
 the contents are supposed to look like:  
-```search.fs_uuid a3423e1e-89b3-4fd0-a97b-ad643c8ae8c9 root 
+```
+search.fs_uuid a3423e1e-89b3-4fd0-a97b-ad643c8ae8c9 root 
 set prefix=($root)'/boot/grub'
-configfile $prefix/grub.cfg```
+configfile $prefix/grub.cfg
+```
 
 ## booting is based on the UUID of the respective partitions
 use blkid to identify the partitions.  
