@@ -20,6 +20,7 @@ search.fs_uuid a3423e1e-89b3-4fd0-a97b-ad643c8ae8c9 root
 set prefix=($root)'/boot/grub'
 configfile $prefix/grub.cfg
 ```
+where on my system ```a3423e1e-89b3-4fd0-a97b-ad643c8ae8c9``` is the UUID of my rootfs.  
 
 ## booting is based on the UUID of the respective partitions
 use blkid to identify the partitions.  
